@@ -4,56 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Links</title>
+    
     <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-            
-    <div class="d-flex justify-content-end p-3">
-        <div class="dropdown">
-            <button class="btn btn-dark" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-list fs-3"></i> <!-- Bigger Icon -->
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDropdown">
-                <!-- <li><a class="dropdown-item" href="http://www.facebook.com">Login</a></li> -->
-                <li><a class="dropdown-item" href="puzzelgame.html">Game</a></li>
-                <li><a class="dropdown-item" href="#about">Portfolio</a></li>
-                <li><a class="dropdown-item" href="#cv">CV</a></li>
-            </ul>
-        </div>
-    </div>
 
-    
-    
-    <div class="container">
+    <!-- Navbar with Dropdown -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid d-flex justify-content-end">
+            <div class="dropdown">
+                <button class="btn btn-dark" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list fs-3"></i> <!-- Bigger Icon -->
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDropdown">
+                    <li><a class="dropdown-item" href="puzzelgame.html">Game</a></li>
+                    <li><a class="dropdown-item" href="#about">Portfolio</a></li>
+                    <li><a class="dropdown-item" href="#cv">CV</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-4">
         <div class="profile">
             <img src="pic/profile.png" alt="Profile Picture" class="profile-img" id="profile-img">
             <h2>Janith Suraweera</h2>
             <p>👨‍💻 Software Developer | UI/UX Designer | Programmer 🎨</p>
         </div>
-        <div class="social-icons">
-            <a href="https://web.facebook.com/janith.suraweera.58"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/janithsuraweera"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com/janithsuraweera"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://www.youtube.com/@janith_suraweera"><i class="bi bi-youtube"></i></a>
-            <a href="https://wa.me/762060052"><i class="bi bi-whatsapp"></i></a>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons d-flex justify-content-center gap-3">
+            <a href="https://web.facebook.com/janith.suraweera.58"><i class="bi bi-facebook fs-3"></i></a>
+            <a href="https://www.instagram.com/janithsuraweera"><i class="bi bi-instagram fs-3"></i></a>
+            <a href="https://x.com/janithsuraweera"><i class="bi bi-twitter-x fs-3"></i></a>
+            <a href="https://www.youtube.com/@janith_suraweera"><i class="bi bi-youtube fs-3"></i></a>
+            <a href="https://wa.me/762060052"><i class="bi bi-whatsapp fs-3"></i></a>
         </div>
-        <div class="links">
-            <a href="https://web.facebook.com/janith.suraweera.58" class="link"><i class="bi bi-facebook"></i><span>Facebook</span></a>
-            <a href="https://www.instagram.com/janithsuraweera" class="link"><i class="bi bi-instagram"></i><span>Instagram</span></a>
-            <a href="https://wa.me/762060052" class="link"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
-            <a href="https://www.linkedin.com/in/janith-suraweera-510888203" class="link"><i class="bi bi-linkedin"></i><span>LinkedIn</span></a>
-            <a href="https://x.com/janithsuraweera" class="link"><i class="bi bi-twitter-x"></i><span>X</span></a>
-            <a href="https://github.com/janithsuraweera" class="link"><i class="bi bi-github"></i><span>GitHub</span></a>
-            <a href="https://www.youtube.com/@janith_suraweera" class="link"><i class="bi bi-youtube"></i><span>YouTube</span></a>
+
+        <!-- Links Section -->
+        <div class="links d-flex flex-column align-items-center mt-4">
+            <a href="https://web.facebook.com/janith.suraweera.58" class="btn btn-outline-primary w-50"><i class="bi bi-facebook"></i> Facebook</a>
+            <a href="https://www.instagram.com/janithsuraweera" class="btn btn-outline-danger w-50"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://wa.me/762060052" class="btn btn-outline-success w-50"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.linkedin.com/in/janith-suraweera-510888203" class="btn btn-outline-primary w-50"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a href="https://x.com/janithsuraweera" class="btn btn-outline-dark w-50"><i class="bi bi-twitter-x"></i> X</a>
+            <a href="https://github.com/janithsuraweera" class="btn btn-outline-dark w-50"><i class="bi bi-github"></i> GitHub</a>
+            <a href="https://www.youtube.com/@janith_suraweera" class="btn btn-outline-danger w-50"><i class="bi bi-youtube"></i> YouTube</a>
         </div>
     </div>
-    <footer>
+
+    <footer class="text-center mt-4">
         <p>Powered by Janith Suraweera &copy; 2025</p>
     </footer>
 
