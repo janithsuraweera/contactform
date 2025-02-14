@@ -1,9 +1,8 @@
-document.querySelectorAll('.link').forEach(link => {
-    link.addEventListener('mouseover', () => {
-        link.style.transform = 'scale(1.15)';
-        link.style.transition = 'transform 0.3s ease';
-    });
-    link.addEventListener('mouseleave', () => {
-        link.style.transform = 'scale(1)';
-    });
+document.getElementById('profile-img').addEventListener('mouseover', function() {
+    this.style.transition = 'transform 1s ease-in-out';
+    this.style.transform = 'translateX(-100%) rotate(360deg)';
+});
+document.getElementById('profile-img').addEventListener('mouseleave', function() {
+    this.style.transition = 'transform 1s ease-in-out';
+    this.style.transform = 'translateX(0) rotate(0deg)';
 });
