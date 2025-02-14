@@ -60,16 +60,35 @@
     <footer class="text-center mt-4">
         <p>Powered by Janith Suraweera &copy; 2025</p>
     </footer>
-
     <script>
-        function getStoredClickData(platform) {
-            let encryptedData = localStorage.getItem(platform);
-            if (encryptedData) {
-                console.log(`Stored (Hashed) Data for ${platform}:`, encryptedData);
-                alert(`Encrypted Data: ${encryptedData}`);
-            } else {
-                alert(`${platform} has no click records.`);
-            }
+        async function hashData(data) {
+            const encoder = new TextEncoder();
+            const dataBuffer = encoder.encode(data);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+            return btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
+        }
+
+        async function trackClick(platform) {
+            let clickCount = localStorage.getItem(platform) || 0;
+            clickCount = parseInt(clickCount) + 1;
+            let timestamp = new Date().toISOString();
+
+            let deviceModel = navigator.userAgent;
+            
+            // Get IP & Location
+            fetch("https://ipapi.co/json/")
+                .then(response => response.json())
+                .then(async data => {
+                    let ip = data.ip;
+                    let location = `${data.city}, ${data.country}`;
+
+                    let rawData = `${platform},${clickCount},${timestamp},${ip},${location},${deviceModel}`;
+                    let encryptedData = await hashData(rawData);
+
+                    localStorage.setItem(platform, encryptedData);
+                    alert(`Click recorded for ${platform}`);
+                })
+                .catch(error => console.error("Error fetching IP:", error));
         }
     </script>
     
