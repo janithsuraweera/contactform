@@ -19,13 +19,14 @@ body {
     margin-top: auto; /* Move profile picture slightly lower */
 }
 .profile img {
-    width: 140px; /* Reduce size slightly */
-    height: 140px;
+    width: 125px; /* Reduce size slightly */
+    height: 125px;
     border-radius: 50%;
     border: 5px solid white;
     object-fit: cover;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.8s ease-in-out;
     cursor: pointer;
+    margin-bottom: 35px;
 }
 .profile img:hover {
     transform: scale(1.5) rotate(360deg); /* Reduce scale a bit */
