@@ -1,3 +1,4 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #4a90e2, #002f6c);
@@ -9,13 +10,38 @@ body {
 .container {
     margin-top: 50px;
 }
-.profile img {
+.profile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     border: 3px solid white;
-    display: block;
-    margin: 0 auto;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+}
+.profile-img:hover {
+    transform: scale(3) rotate(360deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.social-icons a {
+    color: white;
+    font-size: 30px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #ffeb3b;
 }
 .links {
     margin-top: 20px;
@@ -41,10 +67,10 @@ body {
     position: relative;
     overflow: hidden;
 }
-.link img {
-    width: 30px;
-    height: 30px;
+.link i {
+    font-size: 24px;
     margin-right: 15px;
+    color: white;
 }
 .link:hover {
     background: rgba(255, 255, 255, 0.4);
