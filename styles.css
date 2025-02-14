@@ -146,3 +146,115 @@ body {
 .links a:hover i.bi-twitter-x { color: black; }
 .links a:hover i.bi-github { color: black; }
 .links a:hover i.bi-youtube { color: #FF0000; }
+
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #4a90e2, #002f6c);
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+/* Profile Picture Animation */
+.profile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
+}
+
+.profile img:hover {
+    transform: translateX(150%) rotate(360deg);
+    box-shadow: 0 0 20px rgba(255, 3, 3, 0.8);
+    border-color: rgb(255, 3, 3);
+}
+
+.profile h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Menu Styles */
+.menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.menu-btn {
+    background: white;
+    color: black;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 150px;
+    display: none;
+    border-radius: 5px;
+}
+
+.menu-list.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.menu-list li {
+    padding: 10px;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.menu-list a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+}
