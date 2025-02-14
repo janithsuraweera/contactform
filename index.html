@@ -62,21 +62,17 @@
     </footer>
 
     <script>
-        function trackClick(platform) {
-            // Retrieve the current click count from localStorage, or set it to 0 if it's not found
-            let currentCount = localStorage.getItem(platform) || 0;
-            currentCount = parseInt(currentCount) + 1;
-
-            // Store the updated count back to localStorage
-            localStorage.setItem(platform, currentCount);
-
-            // Optionally, log it to console
-            console.log(`${platform} clicked ${currentCount} times`);
-
-            // You can also display it on the page if needed
-            alert(`${platform} has been clicked ${currentCount} times.`);
+        function getStoredClickData(platform) {
+            let encryptedData = localStorage.getItem(platform);
+            if (encryptedData) {
+                console.log(`Stored (Hashed) Data for ${platform}:`, encryptedData);
+                alert(`Encrypted Data: ${encryptedData}`);
+            } else {
+                alert(`${platform} has no click records.`);
+            }
         }
     </script>
+    
 
 </body>
 </html>
