@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            flex-direction: column;
+            transition: background 1s;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: grab;
+            border: 2px solid #000;
+            transition: transform 0.3s, background 0.3s;
+            border-radius: 5px;
+        }
+        .puzzle-piece:active {
+            transform: scale(1.1);
+        }
+        .drop-zone {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border: 2px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        .correct {
+            background-color: lightgreen !important;
+            border: 2px solid green;
+            animation: pop 0.5s ease;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+            display: none;
+        }
+        #retry, #next-level {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            transition: background 0.3s;
+        }
+        #retry:hover, #next-level:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Drag and Drop Puzzle Game</h2>
+    <div class="puzzle-container" id="puzzleBoard"></div>
+    <div class="puzzle-container" id="piecesContainer"></div>
+    <p id="message">🎉 Congratulations! You solved the puzzle! 🎉</p>
+    <button id="retry">Retry</button>
+    <button id="next-level">Next Level</button>
+    <audio id="successSound" src="success.mp3"></audio>
+    <audio id="failSound" src="fail.mp3"></audio>
+    <script>
+        let level = 1;
+        let totalLevels = 20;
+        
+        function loadLevel() {
+            document.getElementById("puzzleBoard").innerHTML = "";
+            document.getElementById("piecesContainer").innerHTML = "";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("retry").style.display = "none";
+            document.getElementById("next-level").style.display = "none";
+            
+            document.body.style.background = `linear-gradient(to right, hsl(${level * 15}, 100%, 70%), hsl(${level * 10}, 100%, 50%))`;
+            
+            let numbers = [1, 2, 3];
+            numbers.sort(() => Math.random() - 0.5);
+            
+            for (let i = 0; i < 3; i++) {
+                let zone = document.createElement("div");
+                zone.classList.add("drop-zone");
+                zone.setAttribute("data-correct", `piece${i + 1}`);
+                document.getElementById("puzzleBoard").appendChild(zone);
+                
+                let piece = document.createElement("div");
+                piece.classList.add("puzzle-piece");
+                piece.setAttribute("draggable", "true");
+                piece.id = `piece${numbers[i]}`;
+                piece.textContent = numbers[i];
+                piece.style.backgroundColor = `hsl(${level * 20}, 80%, 60%)`;
+                document.getElementById("piecesContainer").appendChild(piece);
+            }
+            
+            const pieces = document.querySelectorAll(".puzzle-piece");
+            const dropZones = document.querySelectorAll(".drop-zone");
+
+            pieces.forEach(piece => {
+                piece.addEventListener("dragstart", (e) => {
+                    e.dataTransfer.setData("text", e.target.id);
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+                zone.addEventListener("drop", (e) => {
+                    e.preventDefault();
+                    const pieceId = e.dataTransfer.getData("text");
+                    const piece = document.getElementById(pieceId);
+                    if (!zone.hasChildNodes()) {
+                        zone.appendChild(piece);
+                        if (pieceId === zone.getAttribute("data-correct")) {
+                            zone.classList.add("correct");
+                            document.getElementById("successSound").play();
+                        } else {
+                            document.getElementById("failSound").play();
+                        }
+                    }
+                });
+            });
+        }
+        
+        document.getElementById("retry").addEventListener("click", loadLevel);
+        document.getElementById("next-level").addEventListener("click", () => {
+            level++;
+            if (level <= totalLevels) {
+                loadLevel();
+            }
+        });
+        
+        loadLevel();
+    </script>
+</body>
+</html>
