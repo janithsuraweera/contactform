@@ -15,18 +15,26 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: -20px; /* Move profile picture slightly lower */
 }
-.profile-img {
-    width: 120px;
-    height: 120px;
+.profile img {
+    width: 140px; /* Reduce size slightly */
+    height: 140px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 5px solid white;
+    object-fit: cover;
     transition: transform 0.5s ease-in-out;
     cursor: pointer;
 }
-.profile-img:hover {
-    transform: scale(3) rotate(360deg);
+.profile img:hover {
+    transform: scale(2.2) rotate(360deg); /* Reduce scale a bit */
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+} 
+.profile h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }
 .social-icons {
     margin-top: 20px;
