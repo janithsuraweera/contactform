@@ -108,3 +108,40 @@ body {
     position: relative;
     z-index: 1;
 }
+
+.links a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    max-width: 400px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.links a i {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.links a:hover {
+    background: white;
+    color: #1877F2; /* Facebook Blue as default */
+    transform: scale(1.05);
+}
+
+/* Custom colors for different platforms */
+.links a:hover i.bi-facebook { color: #1877F2; }
+.links a:hover i.bi-instagram { color: #E4405F; }
+.links a:hover i.bi-whatsapp { color: #25D366; }
+.links a:hover i.bi-linkedin { color: #0077B5; }
+.links a:hover i.bi-twitter-x { color: black; }
+.links a:hover i.bi-github { color: black; }
+.links a:hover i.bi-youtube { color: #FF0000; }
